@@ -7,8 +7,8 @@ This tool (LongestRisingSequenceFinder) is to find and exact the longest raising
 Algorithm：
 
 
-Input: An `IEnumerable<int> numbers`.
-Output: An `IEnumerable<int>` representing the longest rising sequence.
+- Input: An `IEnumerable<int> numbers`.
+- Output: An `IEnumerable<int> result` representing the longest rising sequence.
 
 Steps:
 
@@ -19,16 +19,14 @@ Steps:
        `longestStart` and `longestEnd` will track the start and end indices of the longest rising sequence found so far.
 
 2. Traversing the List:
-    - Iterate over the list `numList` starting from the second element to the end:
-      
-       -- If the current number is greater than the previous number:
-            - Update `currentEnd` to the current index.
-            - If the length of the current sequence (from `currentStart` to `currentEnd`) is greater than the longest sequence found so far (from `longestStart` to `longestEnd`), then:
-                 Update `longestStart` with the value of `currentStart`.
-                 Update `longestEnd` with the value of `currentEnd`.
-   
-       -- If the current number is not greater than the previous number:
-            - Reset `currentStart` and `currentEnd` to the current index.
+   - Iterate over the list `numList` starting from the second element to the end: 
+       - If the current number is greater than the previous number:
+             Update `currentEnd` to the current index.
+       - If the length of the current sequence (from `currentStart` to `currentEnd`) is greater than the longest sequence found so far (from `longestStart` to `longestEnd`), then,
+                  update `longestStart`，`longestEnd` with the value of `currentStart`，`currentEnd`.
+                  
+       - If the current number is not greater than the previous number:
+            Reset `currentStart` and `currentEnd` to the current index.
 
 4. Extracting Longest Rising Sequence:
     - After finishing the iteration, extract the subsequence from `numList` that starts at `longestStart` and ends at `longestEnd`. This subsequence represents the longest rising sequence.
@@ -36,19 +34,22 @@ Steps:
 # UnitTests
 
 Test different scenarios:
-1. Empty Array:
+1. Regular sequence:
+   - Input :[4,3,5,8,5,0,0,-3]
+   - expected output: [3,5,8]  
+2. Empty Array:
    - Input :[]
    - expected output: []
-2. Single Element:
+3. Single Element:
    - input; [1]
    - expected output: [1]
-3. Decreasing sequence:
+4. Decreasing sequence:
    - input : [8,7,6,5,4,3,2,1,-1,-2]
    - expected output: [8]
-4. Increasing sequence:
+5. Increasing sequence:
    - input: [-2,-1,1,2,3,4,5,6,7,8]
    - expected output: [-2,-1,1,2,3,4,5,6,7,8]
-5. More than one rasing sequence:
+6. More than one rasing sequence:
    - input: [-8,-11,6,9,-4,-3,-2,-1,-11,-2]
    - expected output : [-4,-3,-2,-1]
 
